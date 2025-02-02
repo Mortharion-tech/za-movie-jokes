@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { data } from "./data";
 
 const moviesSlice = createSlice({
   name: "movies",
-  initialState: data,
+  initialState: data.results,
   reducers: {},
 });
 
