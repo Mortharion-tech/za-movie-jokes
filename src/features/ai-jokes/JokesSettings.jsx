@@ -23,10 +23,12 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ruleAdded, ruleRemoved } from "./aiJokesSlice";
 
+const initialFormState = { name: "", description: "" };
+
 function JokesSettings() {
   const dispatch = useDispatch();
   const rules = useSelector((state) => state.aiJokes.rules);
-  const [form, setForm] = useState({ name: "", description: "" });
+  const [form, setForm] = useState(initialFormState);
 
   const handleRuleRemove = (ruleName) => {
     dispatch(ruleRemoved(ruleName));
@@ -34,6 +36,7 @@ function JokesSettings() {
   const handleAddRule = (event) => {
     event.preventDefault();
     dispatch(ruleAdded(form));
+    setForm(initialFormState);
   };
 
   return (
