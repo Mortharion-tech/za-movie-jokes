@@ -14,12 +14,11 @@ import { Link, useParams } from "react-router-dom";
 import { MOVIEDB_IMAGES_URL } from "src/common/constants";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useSelector } from "react-redux";
+import { selectMovieById } from "./moviesSlice";
 
 function MovieDetails() {
   const { movieId } = useParams();
-  const movie = useSelector((state) =>
-    state.movies.find((movie) => movie.id === Number(movieId))
-  );
+  const movie = useSelector((state) => selectMovieById(state, movieId));
 
   return (
     <Box minH="100vh">
