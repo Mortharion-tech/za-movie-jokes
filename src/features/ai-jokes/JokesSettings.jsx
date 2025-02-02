@@ -22,6 +22,7 @@ import {
 import { useState } from "react";
 
 function JokesSettings() {
+  const [form, setForm] = useState({ name: "", description: "" });
   const [rules, setRules] = useState([
     { name: "Joke type", description: "Programmer" },
   ]);
@@ -29,6 +30,7 @@ function JokesSettings() {
   const handleRuleRemove = (ruleName) => {};
   const handleAddRule = (event) => {
     event.preventDefault();
+    setRules([...rules, form]);
   };
 
   return (
@@ -74,13 +76,23 @@ function JokesSettings() {
               <FormControl isRequired>
                 <InputGroup size="sm" mb={2}>
                   <InputLeftAddon>Name:</InputLeftAddon>
-                  <Input type="text" />
+                  <Input
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    type="text"
+                  />
                 </InputGroup>
               </FormControl>{" "}
               <FormControl isRequired>
                 <InputGroup size="sm" mb={2}>
                   <InputLeftAddon>Description:</InputLeftAddon>
-                  <Input type="text" />
+                  <Input
+                    value={form.description}
+                    onChange={(e) =>
+                      setForm({ ...form, description: e.target.value })
+                    }
+                    type="text"
+                  />
                 </InputGroup>
               </FormControl>
               <Button size="sm" type="submit" alignSelf="flex-end">
