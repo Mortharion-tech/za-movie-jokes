@@ -8,6 +8,10 @@ const aiJokesSlice = createSlice({
   },
   reducers: {
     ruleAdded(state, action) {
+      const ruleIndex = state.rules.findIndex(
+        (rule) => rule.name === action.payload.name
+      );
+      if (ruleIndex >= 0) return;
       state.rules.push(action.payload);
     },
     ruleRemoved(state, action) {
@@ -15,7 +19,6 @@ const aiJokesSlice = createSlice({
         (rule) => rule.name === action.payload
       );
       if (ruleIndex < 0) return;
-
       state.rules.splice(ruleIndex, 1);
     },
   },
