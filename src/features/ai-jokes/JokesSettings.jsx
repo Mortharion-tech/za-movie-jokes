@@ -20,25 +20,24 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function JokesSettings() {
+  const rules = useSelector((state) => state.aiJokes.rules);
   const [form, setForm] = useState({ name: "", description: "" });
-  const [rules, setRules] = useState([
-    { name: "Joke type", description: "Programmer" },
-  ]);
 
   const handleRuleRemove = (ruleName) => {
-    const ruleIndex = rules.findIndex((rule) => rule.name === ruleName);
+    /* const ruleIndex = rules.findIndex((rule) => rule.name === ruleName);
     if (ruleIndex < 0) return;
 
     const newRules = [...rules];
     newRules.splice(ruleIndex, 1);
 
-    setRules(newRules);
+    setRules(newRules); */
   };
   const handleAddRule = (event) => {
     event.preventDefault();
-    setRules([...rules, form]);
+    /* setRules([...rules, form]); */
   };
 
   return (
