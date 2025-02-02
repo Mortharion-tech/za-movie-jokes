@@ -6,7 +6,13 @@ const aiJokesSlice = createSlice({
     rules: [{ name: "Joke type", description: "Programmer" }],
     jokes: [],
   },
-  reducers: {},
+  reducers: {
+    ruleAdded(state, action) {
+      state.rules.push(action.payload);
+    },
+  },
 });
+
+export const { ruleAdded } = aiJokesSlice.actions;
 
 export default aiJokesSlice.reducer;

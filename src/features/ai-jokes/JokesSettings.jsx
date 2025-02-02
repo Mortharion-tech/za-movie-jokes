@@ -20,9 +20,11 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { ruleAdded } from "./aiJokesSlice";
 
 function JokesSettings() {
+  const dispatch = useDispatch();
   const rules = useSelector((state) => state.aiJokes.rules);
   const [form, setForm] = useState({ name: "", description: "" });
 
@@ -37,7 +39,7 @@ function JokesSettings() {
   };
   const handleAddRule = (event) => {
     event.preventDefault();
-    /* setRules([...rules, form]); */
+    dispatch(ruleAdded(form));
   };
 
   return (
