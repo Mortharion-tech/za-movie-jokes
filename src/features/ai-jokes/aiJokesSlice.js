@@ -10,9 +10,17 @@ const aiJokesSlice = createSlice({
     ruleAdded(state, action) {
       state.rules.push(action.payload);
     },
+    ruleRemoved(state, action) {
+      const ruleIndex = state.rules.findIndex(
+        (rule) => rule.name === action.payload
+      );
+      if (ruleIndex < 0) return;
+
+      state.rules.splice(ruleIndex, 1);
+    },
   },
 });
 
-export const { ruleAdded } = aiJokesSlice.actions;
+export const { ruleAdded, ruleRemoved } = aiJokesSlice.actions;
 
 export default aiJokesSlice.reducer;
