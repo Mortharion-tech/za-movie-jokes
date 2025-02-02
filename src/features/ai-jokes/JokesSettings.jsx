@@ -27,7 +27,15 @@ function JokesSettings() {
     { name: "Joke type", description: "Programmer" },
   ]);
 
-  const handleRuleRemove = (ruleName) => {};
+  const handleRuleRemove = (ruleName) => {
+    const ruleIndex = rules.findIndex((rule) => rule.name === ruleName);
+    if (ruleIndex < 0) return;
+
+    const newRules = [...rules];
+    newRules.splice(ruleIndex, 1);
+
+    setRules(newRules);
+  };
   const handleAddRule = (event) => {
     event.preventDefault();
     setRules([...rules, form]);
