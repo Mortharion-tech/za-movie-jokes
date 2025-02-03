@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Flex, Heading, SimpleGrid, Spinner, useToast } from "@chakra-ui/react";
 import { MOVIEDB_IMAGES_URL } from "src/common/constants";
@@ -8,7 +9,6 @@ import {
   selectMoviesError,
   selectMoviesStatus,
 } from "./moviesSlice";
-import { useEffect } from "react";
 
 function MoviesList() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ function MoviesList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await dispatch(fetchMovies());
+        await dispatch(fetchMovies()).unwrap();
       } catch (err) {
         toast({
           title: "Failed to load movies",

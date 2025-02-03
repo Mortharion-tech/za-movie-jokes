@@ -34,7 +34,7 @@ const moviesSlice = createSlice({
 });
 
 export const selectAllMovies = (state) => state.movies.movies;
-export const selectMoviesStatus = (state) => state.status;
+export const selectMoviesStatus = (state) => state.movies.status;
 export const selectMoviesError = (state) => state.movies.error;
 export const selectMovieById = (state, movieId) =>
   state.movies.movies.find((movie) => movie.id === Number(movieId));
