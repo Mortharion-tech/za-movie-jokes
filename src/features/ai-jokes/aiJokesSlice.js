@@ -13,14 +13,25 @@ const initialState = {
 
 export const fetchJoke = createAsyncThunk(
   "aiJokes/fetchJoke",
-  async ({ movieId, movieTitle, movieDescription }) => {
+  async ({ movieId, movieTitle, movieDescription, thunkApi }) => {
     console.log(movieId, movieTitle, movieDescription);
+    const state = thunkApi.getState();
+    const joke = selectJokeByMovieId(state, movieId);
     const messages = [
       {
         role: "user",
         content: `Movie Title: ${movieTitle}, Movie Description: ${movieDescription}, Joke:`,
       },
     ];
+
+    if (joke) {
+      messages.unshift({
+        role: "user",
+        content: `Don't use joke: ${joke.joke}`,
+      });
+    }
+
+    console.log(messages);
 
     const response = await axios.post(
       OPENAI_COMPLETIONS_API_URL,
