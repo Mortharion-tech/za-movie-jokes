@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { OPENAI_COMPLETIONS_API_URL } from "src/common/constants";
 
 const initialState = {
   rules: [{ name: "Joke type", description: "Programmer" }],
@@ -13,7 +15,28 @@ export const fetchJoke = createAsyncThunk(
   "aiJokes/fetchJoke",
   async ({ movieId, movieTitle, movieDescription }) => {
     console.log(movieId, movieTitle, movieDescription);
-    return { movieId, joke: "Funny joke!" };
+    const messages = [
+      {
+        role: "user",
+        content: `Movie Title: ${movieTitle}, Movie Description: ${movieDescription}, Joke:`,
+      },
+    ];
+
+    const response = await axios.post(
+      OPENAI_COMPLETIONS_API_URL,
+      {
+        messages,
+        model: "gpt-4o-mini",
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+        },
+      }
+    );
+
+    console.log(response);
+    return { movieId, joke: response.data.choices[0].message.content };
   }
 );
 
