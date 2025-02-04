@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Button,
   Card,
@@ -8,7 +9,6 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
 
 function MovieCard({ id, title, poster, overview }) {
   return (

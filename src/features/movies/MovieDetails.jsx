@@ -1,3 +1,5 @@
+import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   Box,
   Card,
@@ -9,12 +11,10 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { Link, useParams } from "react-router-dom";
-import { MOVIEDB_IMAGES_URL } from "src/common/constants";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import { useSelector } from "react-redux";
-import { selectMovieById } from "./moviesSlice";
 import JokesGenerator from "src/features/ai-jokes/JokesGenerator";
+import { MOVIEDB_IMAGES_URL } from "src/common/constants";
+import { selectMovieById } from "./moviesSlice";
 
 function MovieDetails() {
   const { movieId } = useParams();

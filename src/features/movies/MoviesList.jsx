@@ -17,8 +17,8 @@ function MoviesList() {
   const moviesStatus = useSelector(selectMoviesStatus);
   const moviesError = useSelector(selectMoviesError);
 
-  console.log(movies);
-  console.log(moviesStatus);
+  /*   console.log(movies);
+  console.log(moviesStatus); */
 
   useEffect(() => {
     const fetchData = async () => {
