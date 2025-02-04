@@ -21,14 +21,14 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ruleAdded, ruleRemoved } from "./aiJokesSlice";
+import { ruleAdded, ruleRemoved, selectJokesRules } from "./aiJokesSlice";
 
 const initialFormState = { name: "", description: "" };
 
 function JokesSettings() {
   const dispatch = useDispatch();
-  const rules = useSelector((state) => state.aiJokes.rules);
   const [form, setForm] = useState(initialFormState);
+  const rules = useSelector(selectJokesRules);
 
   const handleRuleRemove = (ruleName) => {
     dispatch(ruleRemoved(ruleName));
@@ -53,7 +53,7 @@ function JokesSettings() {
           <PopoverCloseButton />
           <PopoverBody>
             <Flex width="100%" direction="column">
-              {rules.map((rule) => (
+              {rules?.map((rule) => (
                 <Flex
                   key={rule.name}
                   width="100%"

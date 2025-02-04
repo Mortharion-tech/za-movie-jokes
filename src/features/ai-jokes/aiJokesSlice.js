@@ -11,7 +11,8 @@ const initialState = {
 
 export const fetchJoke = createAsyncThunk(
   "aiJokes/fetchJoke",
-  async ({ movieId }) => {
+  async ({ movieId, movieTitle, movieDescription }) => {
+    console.log(movieId, movieTitle, movieDescription);
     return { movieId, joke: "Funny joke!" };
   }
 );
@@ -64,5 +65,6 @@ export const { ruleAdded, ruleRemoved } = aiJokesSlice.actions;
 export const selectJokeByMovieId = (state, movieId) =>
   state.aiJokes.jokes.jokes.find((joke) => joke.movieId === movieId);
 export const selectJokesStatus = (state) => state.aiJokes.jokes.status;
+export const selectJokesRules = (state) => state.aiJokes.jokes.rules;
 
 export default aiJokesSlice.reducer;
