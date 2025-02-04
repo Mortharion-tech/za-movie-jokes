@@ -61,4 +61,8 @@ const aiJokesSlice = createSlice({
 
 export const { ruleAdded, ruleRemoved } = aiJokesSlice.actions;
 
+export const selectJokeByMovieId = (state, movieId) =>
+  state.aiJokes.jokes.jokes.find((joke) => joke.movieId === movieId);
+export const selectJokesStatus = (state) => state.aiJokes.jokes.status;
+
 export default aiJokesSlice.reducer;

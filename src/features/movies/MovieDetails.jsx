@@ -52,7 +52,11 @@ function MovieDetails() {
           </CardBody>
 
           <CardFooter>
-            <JokesGenerator />
+            <JokesGenerator
+              movieId={movie.id}
+              movieTitle={movie.title}
+              movieDescription={movie.overview}
+            />
           </CardFooter>
         </Stack>
       </Card>
