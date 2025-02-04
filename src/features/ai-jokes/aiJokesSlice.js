@@ -17,10 +17,17 @@ export const fetchJoke = createAsyncThunk(
     console.log(movieId, movieTitle, movieDescription);
     const state = thunkApi.getState();
     const joke = selectJokeByMovieId(state, movieId);
+    const rules = selectJokesRules(state);
+    const rulesParams = rules.reduce(
+      (acc, rule) => `${acc}${rule.name}: ${rule.description}\n`,
+      ""
+    );
+    /* console.log(rulesParams); */
+
     const messages = [
       {
         role: "user",
-        content: `Movie Title: ${movieTitle}, Movie Description: ${movieDescription}, Joke:`,
+        content: `Movie Title: ${movieTitle}, Movie Description: ${movieDescription}, ${rulesParams} Joke:`,
       },
     ];
 
