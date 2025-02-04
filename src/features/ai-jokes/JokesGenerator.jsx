@@ -1,5 +1,5 @@
-import { Badge, Button, Flex, Text, useToast } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
+import { Badge, Button, Flex, Text, useToast } from "@chakra-ui/react";
 import {
   fetchJoke,
   selectJokeByMovieId,

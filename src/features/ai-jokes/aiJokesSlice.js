@@ -6,15 +6,15 @@ const initialState = {
   rules: [{ name: "Joke type", description: "Programmer" }],
   jokes: {
     jokes: [],
-    status: "idle",
+    status: "idle", // 'idle' / 'loading' / 'succeeded' / 'failed'
     error: null,
   },
 };
 
 export const fetchJoke = createAsyncThunk(
   "aiJokes/fetchJoke",
-  async ({ movieId, movieTitle, movieDescription, thunkApi }) => {
-    console.log(movieId, movieTitle, movieDescription);
+  async ({ movieId, movieTitle, movieDescription }, thunkApi) => {
+    /* console.log(movieId, movieTitle, movieDescription); */
     const state = thunkApi.getState();
     const joke = selectJokeByMovieId(state, movieId);
     const rules = selectJokesRules(state);
@@ -38,7 +38,7 @@ export const fetchJoke = createAsyncThunk(
       });
     }
 
-    console.log(messages);
+    /* console.log(messages); */
 
     const response = await axios.post(
       OPENAI_COMPLETIONS_API_URL,
@@ -53,7 +53,7 @@ export const fetchJoke = createAsyncThunk(
       }
     );
 
-    console.log(response);
+    /* console.log(response); */
     return { movieId, joke: response.data.choices[0].message.content };
   }
 );
