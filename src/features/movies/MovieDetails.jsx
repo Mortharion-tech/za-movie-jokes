@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
+  Badge,
   Box,
   Card,
   CardBody,
@@ -46,8 +47,10 @@ function MovieDetails() {
 
         <Stack>
           <CardBody>
-            <Heading size="md">{movie.title}</Heading>
-
+            <Heading size="md">{movie?.title}</Heading>
+            <Text py="2" color="gray.600">
+              Rating: <Badge colorScheme="yellow">{movie?.vote_average}</Badge>
+            </Text>
             <Text py="2">{movie.overview}</Text>
           </CardBody>
 
