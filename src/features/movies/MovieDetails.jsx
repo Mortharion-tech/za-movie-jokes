@@ -22,7 +22,7 @@ function MovieDetails() {
   const movie = useSelector((state) => selectMovieById(state, movieId));
 
   return (
-    <Box minH="100vh">
+    <Box minH="calc(100vh - 161px)">
       <Link to="/">
         <IconButton
           aria-label="Go back"
