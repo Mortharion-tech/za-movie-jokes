@@ -9,10 +9,10 @@ import {
 import { MOVIEDB_IMAGES_URL } from "src/common/constants";
 import MovieCard from "./MovieCard";
 import {
-  fetchMovies,
+  /* fetchMovies,
   selectAllMovies,
   selectMoviesError,
-  selectMoviesStatus,
+  selectMoviesStatus, */
   useGetMoviesQuery,
 } from "./moviesSlice";
 
