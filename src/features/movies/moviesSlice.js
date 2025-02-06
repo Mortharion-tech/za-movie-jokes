@@ -22,7 +22,7 @@ export const moviesApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getMovies: buider.query({
+    getMovies: builder.query({
       query: () => "/movie/popular",
       transformResponse: (response) => response.results,
     }),
