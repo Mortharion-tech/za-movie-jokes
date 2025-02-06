@@ -1,26 +1,80 @@
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import {
   Badge,
   Box,
   Card,
   CardBody,
   CardFooter,
+  Flex,
   Heading,
   IconButton,
   Image,
+  Spinner,
   Stack,
   Text,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import JokesGenerator from "src/features/ai-jokes/JokesGenerator";
 import { MOVIEDB_IMAGES_URL } from "src/common/constants";
+import { useGetMovieByIdQuery } from "./moviesSlice";
 
 function MovieDetails() {
   const { movieId } = useParams();
-  /*   const movie = useSelector((state) => selectMovieById(state, movieId)); */
-  return <div></div>;
-  /*  return (
+  const { data, isError, error, isLoading, isSuccess } =
+    useGetMovieByIdQuery(movieId);
+
+  let content;
+  if (isSuccess) {
+    content = (
+      <Card
+        direction={{ base: "column", sm: "row" }}
+        overflow="hidden"
+        variant="outline"
+      >
+        <Image
+          objectFit="cover"
+          maxW={{ base: "100%", sm: "200px" }}
+          src={`${MOVIEDB_IMAGES_URL}/${data.poster_path}`}
+          alt={`${data.title}'s poster`}
+        />
+
+        <Stack>
+          <CardBody>
+            <Heading size="md">{data?.title}</Heading>
+            <Text py="2" color="gray.600">
+              Rating:{" "}
+              <Badge colorScheme="yellow">
+                {data?.vote_average ? data.vote_average.toFixed(1) : "N/A"}
+              </Badge>
+            </Text>
+            <Text py="2">{data.overview}</Text>
+          </CardBody>
+
+          <CardFooter>
+            <JokesGenerator
+              movieId={data.id}
+              movieTitle={data.title}
+              movieDescription={data.overview}
+            />
+          </CardFooter>
+        </Stack>
+      </Card>
+    );
+  } else if (isLoading) {
+    content = (
+      <Flex alignItems="center" justifyContent="center">
+        <Spinner text="Loading..." />
+      </Flex>
+    );
+  } else if (isError) {
+    content = (
+      <Flex alignItems="center" justifyContent="center">
+        {error}
+      </Flex>
+    );
+  }
+
+  return (
     <Box minH="calc(100vh - 161px)">
       <Link to="/">
         <IconButton
@@ -31,42 +85,10 @@ function MovieDetails() {
           borderColor="gray.300"
           icon={<ArrowBackIcon />}
         />
+        {content}
       </Link>
-      <Card
-        direction={{ base: "column", sm: "row" }}
-        overflow="hidden"
-        variant="outline"
-      >
-        <Image
-          objectFit="cover"
-          maxW={{ base: "100%", sm: "200px" }}
-          src={`${MOVIEDB_IMAGES_URL}/${movie.poster_path}`}
-          alt={`${movie.title}'s poster`}
-        />
-
-        <Stack>
-          <CardBody>
-            <Heading size="md">{movie?.title}</Heading>
-            <Text py="2" color="gray.600">
-              Rating:{" "}
-              <Badge colorScheme="yellow">
-                {movie?.vote_average ? movie.vote_average.toFixed(1) : "N/A"}
-              </Badge>
-            </Text>
-            <Text py="2">{movie.overview}</Text>
-          </CardBody>
-
-          <CardFooter>
-            <JokesGenerator
-              movieId={movie.id}
-              movieTitle={movie.title}
-              movieDescription={movie.overview}
-            />
-          </CardFooter>
-        </Stack>
-      </Card>
     </Box>
-  ); */
+  );
 }
 
 export default MovieDetails;
