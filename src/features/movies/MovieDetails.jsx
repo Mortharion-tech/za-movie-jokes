@@ -15,13 +15,12 @@ import {
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import JokesGenerator from "src/features/ai-jokes/JokesGenerator";
 import { MOVIEDB_IMAGES_URL } from "src/common/constants";
-import { selectMovieById } from "./moviesSlice";
 
 function MovieDetails() {
   const { movieId } = useParams();
-  const movie = useSelector((state) => selectMovieById(state, movieId));
-
-  return (
+  /*   const movie = useSelector((state) => selectMovieById(state, movieId)); */
+  return <div></div>;
+  /*  return (
     <Box minH="calc(100vh - 161px)">
       <Link to="/">
         <IconButton
@@ -67,7 +66,7 @@ function MovieDetails() {
         </Stack>
       </Card>
     </Box>
-  );
+  ); */
 }
 
 export default MovieDetails;
