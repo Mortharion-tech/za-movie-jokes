@@ -75,7 +75,7 @@ function MovieDetails() {
   }
 
   return (
-    <Box minH="calc(100vh - 161px)">
+    <Box minH="calc(100vh - 161px)" minW="100%" py={8}>
       <Link to="/">
         <IconButton
           aria-label="Go back"
