@@ -10,6 +10,7 @@ import { MOVIEDB_API_URL } from "src/common/constants";
 
 export const moviesApi = createApi({
   reducerPath: "moviesApi",
+  keepUnusedDataFor: 300,
   baseQuery: fetchBaseQuery({
     baseUrl: MOVIEDB_API_URL,
     prepareHeaders: (headers) => {
