@@ -26,10 +26,13 @@ export const moviesApi = createApi({
       query: () => "/movie/popular",
       transformResponse: (response) => response.results,
     }),
+    getMovieById: builder.query({
+      query: (movieId) => `/movie/${movieId}`,
+    }),
   }),
 });
 
-export const { useGetMoviesQuery } = moviesApi;
+export const { useGetMoviesQuery, useGetMovieByIdQuery } = moviesApi;
 
 /* const initialState = {
   movies: [],
