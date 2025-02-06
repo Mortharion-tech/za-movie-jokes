@@ -1,4 +1,5 @@
 import { Box, Flex } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import JokesSettings from "src/features/ai-jokes/JokesSettings";
 
 export default function Header() {
@@ -13,6 +14,10 @@ export default function Header() {
         px="6"
       >
         <JokesSettings />
+        <Link to="/" style={{ marginRight: "1rem" }}>
+          Home
+        </Link>
+        <Link to="/contact">Contact</Link>
       </Flex>
     </Box>
   );
