@@ -12,9 +12,6 @@ export default function App() {
           <Route index element={<MoviesList />} />
           <Route path="/movies/:movieId" element={<MovieDetails />} />
         </Route>
-        <Route path="/contact" element={<Layout />}>
-          <Route index element={<h1>Contact Page</h1>} />
-        </Route>
       </Routes>
     </ChakraProvider>
   );
