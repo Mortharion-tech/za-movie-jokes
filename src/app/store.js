@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { moviesApi } from "src/features/movies/moviesSlice";
+import { moviesApi } from "src/features/movies/moviesApi";
 import aiJokesReducer from "src/features/ai-jokes/aiJokesSlice";
 
 export const store = configureStore({

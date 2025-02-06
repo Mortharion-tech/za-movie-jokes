@@ -16,7 +16,7 @@ import {
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import JokesGenerator from "src/features/ai-jokes/JokesGenerator";
 import { MOVIEDB_IMAGES_URL } from "src/common/constants";
-import { useGetMovieByIdQuery } from "./moviesSlice";
+import { useGetMovieByIdQuery } from "./moviesApi";
 
 function MovieDetails() {
   const { movieId } = useParams();

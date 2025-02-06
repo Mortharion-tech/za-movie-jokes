@@ -14,7 +14,7 @@ import {
   selectMoviesError,
   selectMoviesStatus, */
   useGetMoviesQuery,
-} from "./moviesSlice";
+} from "./moviesApi";
 
 function MoviesList() {
   /* const dispatch = useDispatch();
