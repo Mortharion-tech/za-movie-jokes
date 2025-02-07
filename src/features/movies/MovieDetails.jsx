@@ -85,8 +85,8 @@ function MovieDetails() {
           borderColor="gray.300"
           icon={<ArrowBackIcon />}
         />
-        {content}
       </Link>
+      {content}
     </Box>
   );
 }
