@@ -27,7 +27,7 @@ export const fetchJoke = createAsyncThunk(
     const messages = [
       {
         role: "user",
-        content: `Movie Title: ${movieTitle}, Movie Description: ${movieDescription}, ${rulesParams} Joke:`,
+        content: `Movie Title: ${movieTitle}, Movie Description: ${movieDescription}, ${rulesParams} Given this information tell me the most funny hilarious absurd innovative Joke the world has ever heard, this is to crack to a smile on the face of the most unhomorous person that ever lived:`,
       },
     ];
 
